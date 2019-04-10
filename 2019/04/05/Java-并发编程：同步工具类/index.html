@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java,多线程,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Android Java C++">
-<meta property="og:type" content="website">
-<meta property="og:title" content="好久不见">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="前言最近在项目中看有用到CyclicBarrier类，为了明白这个类的具体用法，查了一下相关的资料。在JDK 1.5中提供了几个辅助类帮助我们进行多线程并发编程，学习了一下CountDownLatch、CyclicBarrier、Semaphore。 CountDownLatch 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。  用给定的计数实例化 Coun">
+<meta name="keywords" content="Java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 并发编程：同步工具类">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/Java-并发编程：同步工具类/index.html">
 <meta property="og:site_name" content="好久不见">
-<meta property="og:description" content="Android Java C++">
+<meta property="og:description" content="前言最近在项目中看有用到CyclicBarrier类，为了明白这个类的具体用法，查了一下相关的资料。在JDK 1.5中提供了几个辅助类帮助我们进行多线程并发编程，学习了一下CountDownLatch、CyclicBarrier、Semaphore。 CountDownLatch 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。  用给定的计数实例化 Coun">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T15:47:34.011Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="好久不见">
-<meta name="twitter:description" content="Android Java C++">
+<meta name="twitter:title" content="Java 并发编程：同步工具类">
+<meta name="twitter:description" content="前言最近在项目中看有用到CyclicBarrier类，为了明白这个类的具体用法，查了一下相关的资料。在JDK 1.5中提供了几个辅助类帮助我们进行多线程并发编程，学习了一下CountDownLatch、CyclicBarrier、Semaphore。 CountDownLatch 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。  用给定的计数实例化 Coun">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/05/Java-并发编程：同步工具类/">
 
 
 
 
 
-  <title>好久不见</title>
+  <title>Java 并发编程：同步工具类 | 好久不见</title>
   
 
 
@@ -143,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -247,9 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -279,9 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/05/Java-并发编程：同步工具类/" itemprop="url">Java 并发编程：同步工具类</a></h1>
+          <h1 class="post-title" itemprop="name headline">Java 并发编程：同步工具类</h1>
         
 
         <div class="post-meta">
@@ -372,9 +371,7 @@
       
 
       
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在项目中看有用到CyclicBarrier类，为了明白这个类的具体用法，查了一下相关的资料。在JDK 1.5中提供了几个辅助类帮助我们进行多线程并发编程，学习了一下CountDownLatch、CyclicBarrier、Semaphore。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在项目中看有用到CyclicBarrier类，为了明白这个类的具体用法，查了一下相关的资料。在JDK 1.5中提供了几个辅助类帮助我们进行多线程并发编程，学习了一下CountDownLatch、CyclicBarrier、Semaphore。</p>
 <h1 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h1><blockquote>
 <p>一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。</p>
 </blockquote>
@@ -426,8 +423,6 @@
 <p>方法说明：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Semaphore</span><span class="params">(<span class="keyword">int</span> permits)</span><span class="comment">//参数permits表示许可数目，即同时可以允许多少线程进行访问</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Semaphore</span><span class="params">(<span class="keyword">int</span> permits, <span class="keyword">boolean</span> fair)</span><span class="comment">//这个多了一个参数fair表示是否是公平的，即等待时间越久的越先获取许可</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException <span class="comment">//获取一个许可（阻塞）</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> permits)</span> <span class="keyword">throws</span> InterruptedException<span class="comment">//获取permits个许可（阻塞）</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span><span class="comment">//释放一个许可(阻塞)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(<span class="keyword">int</span> permits)</span><span class="comment">//释放permits个许可(阻塞)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">()</span><span class="comment">//尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException<span class="comment">//尝试获取一个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> permits)</span><span class="comment">//尝试获取permits个许可，若获取成功，则立即返回true，若获取失败，则立即返回false</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> permits, <span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException<span class="comment">//尝试获取permits个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">availablePermits</span><span class="params">()</span> <span class="comment">//返回此信号量中当前可用的许可数。</span></span></span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -442,14 +437,22 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -459,10 +462,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -470,6 +474,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -490,8 +498,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -553,6 +570,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">2.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">3.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Semaphore"><span class="nav-number">4.</span> <span class="nav-text">Semaphore</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -686,6 +719,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
