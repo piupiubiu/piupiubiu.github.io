@@ -120,7 +120,7 @@ scheme: Mist
 # ---------------------------------------------------------------
 # Sidebar Settings
 # ---------------------------------------------------------------
-avatar: /images/myavatar.jpg
+avatar: /images/myavatar.jpeg
 # Social Links.
 # Usage: `Key: permalink || icon`
 # Key is the link label showing to end users.

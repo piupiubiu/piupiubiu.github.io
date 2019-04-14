@@ -278,3 +278,52 @@ public int availablePermits() //返回此信号量中当前可用的许可数。
   
 ```
 
+# 总结
+
+CountDownLatch 用于程等待其他所有线程执行完一些任务之后，继续执行其他代码；
+
+CyclicBarrier 用于一组线程到达某个点之后同时继续执行后续代码；
+
+```
+public Semaphore(int permits)//参数permits表示许可数目，即同时可以允许多少线程进行访问
+public Semaphore(int permits, boolean fair)//这个多了一个参数fair表示是否是公平的，即等待时间越久的越先获取许可
+public void acquire() throws InterruptedException //获取一个许可（阻塞）
+public void acquire(int permits) throws InterruptedException//获取permits个许可（阻塞）
+public void release()//释放一个许可(阻塞)
+public void release(int permits)//释放permits个许可(阻塞)
+public boolean tryAcquire()//尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false
+public boolean tryAcquire(long timeout, TimeUnit unit) throws InterruptedException//尝试获取一个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false
+public boolean tryAcquire(int permits)//尝试获取permits个许可，若获取成功，则立即返回true，若获取失败，则立即返回false
+public boolean tryAcquire(int permits, long timeout, TimeUnit unit) throws InterruptedException//尝试获取permits个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false
+public int availablePermits() //返回此信号量中当前可用的许可数。
+  
+```
+
+# 总结
+
+CountDownLatch 用于程等待其他所有线程执行完一些任务之后，继续执行其他代码；
+
+CyclicBarrier 用于一组线程到达某个点之后同时继续执行后续代码；
+
+```
+public Semaphore(int permits)//参数permits表示许可数目，即同时可以允许多少线程进行访问
+public Semaphore(int permits, boolean fair)//这个多了一个参数fair表示是否是公平的，即等待时间越久的越先获取许可
+public void acquire() throws InterruptedException //获取一个许可（阻塞）
+public void acquire(int permits) throws InterruptedException//获取permits个许可（阻塞）
+public void release()//释放一个许可(阻塞)
+public void release(int permits)//释放permits个许可(阻塞)
+public boolean tryAcquire()//尝试获取一个许可，若获取成功，则立即返回true，若获取失败，则立即返回false
+public boolean tryAcquire(long timeout, TimeUnit unit) throws InterruptedException//尝试获取一个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false
+public boolean tryAcquire(int permits)//尝试获取permits个许可，若获取成功，则立即返回true，若获取失败，则立即返回false
+public boolean tryAcquire(int permits, long timeout, TimeUnit unit) throws InterruptedException//尝试获取permits个许可，若在指定的时间内获取成功，则立即返回true，否则则立即返回false
+public int availablePermits() //返回此信号量中当前可用的许可数。
+  
+```
+
+# 总结
+
+CountDownLatch 用于程等待其他所有线程执行完一些任务之后，继续执行其他代码；
+
+CyclicBarrier 用于一组线程到达某个点之后同时继续执行后续代码；
+
+Semaphore 用于一组线程争抢某些有限资源。
