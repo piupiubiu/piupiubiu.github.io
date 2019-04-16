@@ -262,6 +262,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/15/Lua学习笔记二/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴飞">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myavatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好久不见">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/15/Lua学习笔记二/" itemprop="url">Lua学习笔记二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-15T21:00:34+08:00">
+                2019-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  循环体</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>代码示例及结果：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(a &lt; <span class="number">10</span>)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line">	a = a + <span class="number">1</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> var=值<span class="number">1</span>,值<span class="number">2</span>,值<span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">  循环体</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>从值1变化到值2，每次变化以值3为步长，执行一次循环体。表达式3不指定时默认为1.</p>
+<p>代码示例及结果：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i = <span class="number">0</span>,<span class="number">10</span> <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">print</span>(i)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<p>变化范围包含值2</p>
+<p>for 遍历table:</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">table</span> = &#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;</span><br><span class="line"><span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(<span class="built_in">table</span>) <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">print</span>(i,v)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>	a</span><br><span class="line"><span class="number">2</span>	b</span><br><span class="line"><span class="number">3</span>	c</span><br></pre></td></tr></table></figure>
+<h2 id="repeat…until"><a href="#repeat…until" class="headerlink" title="repeat…until"></a>repeat…until</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repeat</span></span><br><span class="line">  循环体</span><br><span class="line"><span class="keyword">until</span>(条件语句)</span><br></pre></td></tr></table></figure>
+<p>执行循环体，直到条件语句成立</p>
+<p>代码示例及结果：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">repeat</span></span><br><span class="line">  <span class="built_in">print</span>(i)</span><br><span class="line">  i = i+<span class="number">1</span></span><br><span class="line"><span class="keyword">until</span>(i&gt;<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>和其他语言一样，break 可以跳出循环。</p>
+<h1 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h1><h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件语句)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  	执行语句</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>代码示例及结果：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span>(a&gt;<span class="number">0</span>)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"a&gt;0"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><code>a&gt;0</code></p>
+<h2 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件语句)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  条件为真时语句</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  条件为假时语句</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>代码示例及结果：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line"><span class="keyword">if</span>(a&gt; <span class="number">20</span>)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"a&gt;20"</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"a&lt;=20"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><code>a&lt;=20</code></p>
+<h2 id="if…elseif…else"><a href="#if…elseif…else" class="headerlink" title="if…elseif…else"></a>if…elseif…else</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件一)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  条件一为真执行</span><br><span class="line"><span class="keyword">elseif</span>(条件二)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  条件二为真执行</span><br><span class="line"><span class="keyword">elseif</span>(条件N)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  条件N为真执行</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  以上都不满足的条件执行</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>代码示例及结果：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> score = <span class="number">55</span></span><br><span class="line"><span class="keyword">if</span>(score &gt;= <span class="number">80</span> <span class="keyword">and</span> score &lt;= <span class="number">100</span>)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"A"</span>)</span><br><span class="line"><span class="keyword">elseif</span>(score &lt; <span class="number">80</span> <span class="keyword">and</span> score&gt;= <span class="number">60</span>)</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"B"</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"C"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><code>c</code></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">optional_function_scope <span class="function"><span class="keyword">function</span> <span class="title">function_name</span><span class="params">( argument1, argument2, argument3..., argumentn)</span></span></span><br><span class="line">    function_body</span><br><span class="line">    <span class="keyword">return</span> result_params_comma_separated</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>optional_function_scope 指定函数是全局还是局部函数，默认不写是全局，局部是local</li>
+<li>function_name 函数名</li>
+<li>argument 参数列表</li>
+<li>function_body 函数体</li>
+<li>result_params_comma_separated 返回值，可以返回多个值，逗号隔开</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--求两个数的最大值函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">max</span><span class="params">(num1,num2)</span></span></span><br><span class="line">  <span class="keyword">if</span>(num1 &gt; num2)</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">    result = num1</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    result = num2</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>lua 中可以将函数作为参数传递，作为回调函数：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--登录回调</span></span><br><span class="line">callback = <span class="function"><span class="keyword">function</span><span class="params">(errorId)</span></span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"errorId:"</span>..errorId)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--登录方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">login</span><span class="params">(userName,passworld,loginCallback)</span></span></span><br><span class="line">  <span class="keyword">if</span>(userName == <span class="string">"123"</span> <span class="keyword">and</span> passworld == <span class="string">"123456"</span>) <span class="keyword">then</span></span><br><span class="line">    loginCallback(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    loginCallback(<span class="number">-1</span>)</span><br><span class="line"> 	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">login(<span class="string">"123"</span>,<span class="string">"123456"</span>,callback)</span><br></pre></td></tr></table></figure>
+<h2 id="返回多值"><a href="#返回多值" class="headerlink" title="返回多值"></a>返回多值</h2><p>如字符换查找，返回开始和结束的位置：(索引从1开始)</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s,e = <span class="built_in">string</span>.<span class="built_in">find</span>(<span class="string">"hello world"</span>,<span class="string">"world"</span>)</span><br><span class="line"><span class="built_in">print</span>(s,e)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">maxinum</span><span class="params">(array)</span></span></span><br><span class="line">  <span class="keyword">local</span> index = <span class="number">1</span></span><br><span class="line">  <span class="keyword">local</span> <span class="built_in">max</span> = array[index]</span><br><span class="line">  <span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(array) <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span>(v &gt; <span class="built_in">max</span>) <span class="keyword">then</span></span><br><span class="line">      index = i</span><br><span class="line">      <span class="built_in">max</span> = v</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">return</span> index,<span class="built_in">max</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">index,<span class="built_in">max</span> = maxinum(&#123;<span class="number">3</span>,<span class="number">77</span>,<span class="number">34</span>,<span class="number">22</span>,<span class="number">566</span>,<span class="number">7</span>,<span class="number">32</span>,<span class="number">6</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(index,<span class="built_in">max</span>)</span><br></pre></td></tr></table></figure>
+<p><code>5    566</code></p>
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>Lua中可变参数和c,java中一样，用三个点…表示</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(...)</span></span></span><br><span class="line">	sum = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>&#123;...&#125; <span class="keyword">do</span>	<span class="comment">--&#123;...&#125;表示可变参数的数组</span></span><br><span class="line">		sum = sum + v</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">print</span>(add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> <span class="built_in">arg</span> = &#123;...&#125; <span class="comment">-- 将可变参数赋值给局部变量</span></span><br><span class="line">length = #<span class="built_in">arg</span>	<span class="comment">--求可变参数的参数数量</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">select</span>(<span class="string">'#'</span>,...) <span class="comment">--求可变参数的参数数量</span></span><br><span class="line"><span class="built_in">select</span>(n,...)   <span class="comment">-- 访问 n 到 select('#',…) 的参数(多个值)</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/13/Lua学习笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -555,6 +742,20 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">k2=v2</span><br><span class="line">k1=v1</span><br></pre></td></tr></table></figure>
 <h2 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h2><p>lua中，最主要的线程是协同程序</p>
 <h2 id="userdata"><a href="#userdata" class="headerlink" title="userdata"></a>userdata</h2><p>userdata 是一种用户自定义数据，用于表示一种由应用程序或 C/C++ 语言库所创建的类型，可以将任意 C/C++ 的任意数据类型的数据（通常是 struct 和 指针）存储到 Lua 变量中调用。</p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><ul>
+<li><p>算术运算符</p>
+</li>
+<li><p>关系运算符</p>
+</li>
+<li><p>逻辑运算符</p>
+</li>
+<li><p>其他运算符</p>
+</li>
+</ul>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+  加法运算</span><br><span class="line">-	 减法运算</span><br><span class="line">*  乘法运算</span><br><span class="line">/  除法运算</span><br><span class="line">%  取模运算</span><br><span class="line">^  指数运算</span><br><span class="line">-  取负</span><br></pre></td></tr></table></figure>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">==</span><br><span class="line">~=  不等于</span><br><span class="line">&gt;</span><br><span class="line">&lt;</span><br><span class="line">&gt;=</span><br><span class="line">&lt;=</span><br></pre></td></tr></table></figure>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span></span><br><span class="line"><span class="keyword">or</span></span><br><span class="line"><span class="keyword">not</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">..  字符串拼接</span><br><span class="line">#   取字符串或者<span class="built_in">table</span>的长度</span><br></pre></td></tr></table></figure>
 <h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p><a href="http://www.runoob.com/lua/lua-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/lua/lua-tutorial.html</a></p>
 
           
@@ -836,7 +1037,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
