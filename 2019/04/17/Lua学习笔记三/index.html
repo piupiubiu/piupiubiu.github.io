@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="学习笔记,Lua,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="字符串Lua中可以用三种方式定义字符串：  单引号   ‘hello world’ 双引号  “heool world” [[ ]]   [[hello world]]  字符串操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950--字符串转大写print(stri">
+<meta name="keywords" content="学习笔记,Lua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua学习笔记三">
+<meta property="og:url" content="http://yoursite.com/2019/04/17/Lua学习笔记三/index.html">
+<meta property="og:site_name" content="好久不见">
+<meta property="og:description" content="字符串Lua中可以用三种方式定义字符串：  单引号   ‘hello world’ 双引号  “heool world” [[ ]]   [[hello world]]  字符串操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950--字符串转大写print(stri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-24T16:15:23.079Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua学习笔记三">
+<meta name="twitter:description" content="字符串Lua中可以用三种方式定义字符串：  单引号   ‘hello world’ 双引号  “heool world” [[ ]]   [[hello world]]  字符串操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950--字符串转大写print(stri">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/17/Lua学习笔记三/">
+
+
+
+
+
+  <title>Lua学习笔记三 | 好久不见</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">好久不见</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">RTFSC</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/17/Lua学习笔记三/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴飞">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myavatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好久不见">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lua学习笔记三</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T10:23:12+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>Lua中可以用三种方式定义字符串：</p>
+<ul>
+<li>单引号   ‘hello world’</li>
+<li>双引号  “heool world”</li>
+<li>[[ ]]   [[hello world]]</li>
+</ul>
+<h2 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--字符串转大写</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">upper</span>(<span class="string">"hello world"</span>)) <span class="comment">--HELLO WORLD</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.lower(str)转小写</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">lower</span>(<span class="string">"HELLO WORLD"</span>)) <span class="comment">--hello world</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[string.gsub(mainStr,findStr,replaceStr,num)字符串替换，返回替换后的字符串和替换的次数</span></span><br><span class="line"><span class="comment">   mainStr 整个需要被替换的字符串</span></span><br><span class="line"><span class="comment">   findStr 要被替换的部分</span></span><br><span class="line"><span class="comment">   replaceStr 新的字符串</span></span><br><span class="line"><span class="comment">   要替换的数量，不填就是替换所有</span></span><br><span class="line"><span class="comment">--]]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">gsub</span>(<span class="string">"aaaa"</span>,<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="number">3</span>)) <span class="comment">--bbba	3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.find()在一个指定的目标字符串中搜索指定的内容(第三个参数为索引,从第几个开始查找),返回其具体位置（从开始的第一个）。不存在则返回 nil</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">find</span>(<span class="string">"hello world"</span>,<span class="string">"o"</span>,<span class="number">6</span>)) <span class="comment">--结果 8   8</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.reverse()字符串反转</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">reverse</span>(<span class="string">"hello"</span>))	</span><br><span class="line"></span><br><span class="line"><span class="comment">--string.format() 字符串格式化</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">format</span>(<span class="string">"the value is:%d"</span>,<span class="number">4</span>)) <span class="comment">--the value is:4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.char()转成字符串 string.byte() 转成整数值（指定某个位置，不知道默认第一个）</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">char</span>(<span class="number">97</span>,<span class="number">98</span>,<span class="number">99</span>,<span class="number">100</span>)) <span class="comment">-- abcd</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">byte</span>(<span class="string">"abcd"</span>)) <span class="comment">--97</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">byte</span>(<span class="string">"abcd"</span>,<span class="number">2</span>))  <span class="comment">--98  第二个字母转成整数值 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.len("abcd") 字符串长度</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">len</span>(<span class="string">"abcd"</span>)) <span class="comment">--4</span></span><br><span class="line"><span class="built_in">print</span>(#<span class="string">"abcd"</span>)  <span class="comment">--4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.rep("",n) 字符串的n次拷贝</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">rep</span>(<span class="string">"abcd"</span>,<span class="number">2</span>)) <span class="comment">--abcdabcd</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- .. 字符串拼接</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"abc"</span>..<span class="string">"d"</span>) <span class="comment">--abcd </span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.gmatch(str, pattern) 回一个迭代器函数，每一次调用这个函数，返回一个在字符串 str 找到的下一个符合 pattern 描述的子串</span></span><br><span class="line"><span class="keyword">for</span> world <span class="keyword">in</span> <span class="built_in">string</span>.<span class="built_in">gmatch</span>(<span class="string">"Hi hello world"</span>,<span class="string">"%a+"</span>) <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(world)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--[[ 结果</span></span><br><span class="line"><span class="comment">Hi</span></span><br><span class="line"><span class="comment">hello</span></span><br><span class="line"><span class="comment">world</span></span><br><span class="line"><span class="comment">--]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--string.match(str, pattern, init)只寻找源字串str中的第一个配对. 参数init可选, 指定搜寻过程的起点, 默认为1。</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">string</span>.<span class="built_in">match</span>(<span class="string">"I have 2 questions for you."</span>, <span class="string">"%d+ %a+"</span>)) <span class="comment">--2 questions</span></span><br></pre></td></tr></table></figure>
+<h1 id="Lua数组"><a href="#Lua数组" class="headerlink" title="Lua数组"></a>Lua数组</h1><h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><p>Lua中数组索引从1开始</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array = &#123;<span class="string">"hello"</span>,<span class="string">"world"</span>&#125;</span><br><span class="line"><span class="keyword">for</span> i=<span class="number">0</span>,<span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">print</span>(array[i])</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">nil</span></span><br><span class="line">hello</span><br><span class="line">world</span><br></pre></td></tr></table></figure>
+<p>可以以负数作为数组的索引：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">-1</span>,<span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">	array[i] = i</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> array = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>,<span class="number">3</span> <span class="keyword">do</span></span><br><span class="line">	array[i] = &#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span>,<span class="number">3</span> <span class="keyword">do</span></span><br><span class="line">		array[i][j] = i * j</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><h2 id="泛型for迭代器"><a href="#泛型for迭代器" class="headerlink" title="泛型for迭代器"></a>泛型for迭代器</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> <span class="built_in">pairs</span>(<span class="built_in">table</span>) <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">print</span>(k,v)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>泛型 for 在自己内部保存迭代函数，实际上它保存三个值：迭代函数、状态常量、控制变量</p>
+</blockquote>
+<h2 id="无状态的迭代器"><a href="#无状态的迭代器" class="headerlink" title="无状态的迭代器"></a>无状态的迭代器</h2><p>无状态的迭代器是指不保留任何状态的迭代器</p>
+<h2 id="多状态的迭代器"><a href="#多状态的迭代器" class="headerlink" title="多状态的迭代器"></a>多状态的迭代器</h2><p>可以通过闭包来实现</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">array = &#123;<span class="string">"Google"</span>, <span class="string">"Runoob"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">elementIterator</span> <span class="params">(collection)</span></span></span><br><span class="line">   <span class="keyword">local</span> index = <span class="number">0</span></span><br><span class="line">   <span class="keyword">local</span> count = #collection</span><br><span class="line">   <span class="comment">-- 闭包函数</span></span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">()</span></span></span><br><span class="line">      index = index + <span class="number">1</span></span><br><span class="line">      <span class="keyword">if</span> index &lt;= count</span><br><span class="line">      <span class="keyword">then</span></span><br><span class="line">         <span class="comment">--  返回迭代器的当前元素</span></span><br><span class="line">         <span class="keyword">return</span> collection[index]</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> elementIterator(array)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   <span class="built_in">print</span>(element)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h1 id="table"><a href="#table" class="headerlink" title="table"></a>table</h1><blockquote>
+<p>table 是 Lua 的一种数据结构用来帮助我们创建不同的数据类型，如：数组、字典等。</p>
+</blockquote>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 初始化表</span></span><br><span class="line"><span class="built_in">table</span> = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 指定值</span></span><br><span class="line"><span class="built_in">table</span>[<span class="number">1</span>]= <span class="string">"Lua"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 移除引用</span></span><br><span class="line"><span class="built_in">table</span> = <span class="literal">nil</span></span><br><span class="line"><span class="comment">-- lua 垃圾回收会释放内存</span></span><br></pre></td></tr></table></figure>
+<h2 id="table的操作"><a href="#table的操作" class="headerlink" title="table的操作"></a>table的操作</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">t = &#123;<span class="string">"aaa"</span>,<span class="string">"bbb"</span>,<span class="string">"ccc"</span>&#125;</span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">	table.concat (t , sep , start , end)</span></span><br><span class="line"><span class="comment">	将t的所有元素连接起来，用sep作为连接符</span></span><br><span class="line"><span class="comment">	从start开始到end结束</span></span><br><span class="line"><span class="comment">	sep,start,end可以不写</span></span><br><span class="line"><span class="comment">--]]</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"concat:"</span>,<span class="built_in">table</span>.<span class="built_in">concat</span>( t, <span class="string">", "</span>)) <span class="comment">--aaa, bbb, ccc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">	table.insert (table, pos, value):</span></span><br><span class="line"><span class="comment">	在t的pos位置插入value</span></span><br><span class="line"><span class="comment">	pos可以省略，表示在末尾插入</span></span><br><span class="line"><span class="comment">--]]</span></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">insert</span>(t,<span class="string">"ddd"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"t[4]:"</span>,t[<span class="number">4</span>])	<span class="comment">--ddd</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">	 table.remove (t , pos)</span></span><br><span class="line"><span class="comment">	 删除t的pos位置上的元素</span></span><br><span class="line"><span class="comment">--]]</span></span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">remove</span>(t)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"t[4]:"</span>,t[<span class="number">4</span>]) <span class="comment">--nil</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">	table.sort (t , comp)</span></span><br><span class="line"><span class="comment">	给t升序排序</span></span><br><span class="line"><span class="comment">	comp可以省略</span></span><br><span class="line"><span class="comment">--]]</span></span><br><span class="line">tt = &#123;<span class="string">"ddd"</span>,<span class="string">"fff"</span>,<span class="string">"xxx"</span>,<span class="string">"aaa"</span>&#125;</span><br><span class="line"><span class="built_in">table</span>.<span class="built_in">sort</span>(tt)</span><br><span class="line"><span class="keyword">for</span> i,v <span class="keyword">in</span> <span class="built_in">ipairs</span>(tt) <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">print</span>(i,v)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">1	aaa</span></span><br><span class="line"><span class="comment">2	ddd</span></span><br><span class="line"><span class="comment">3	fff</span></span><br><span class="line"><span class="comment">4	xxx</span></span><br><span class="line"><span class="comment">--]]</span></span><br></pre></td></tr></table></figure>
+<p><em>无论是<code>#</code>还是<code>table.getn</code>都会在索引中断的地方停止计数，所以要自己去table的长度</em></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">table_leng</span><span class="params">(t)</span></span></span><br><span class="line">  <span class="keyword">local</span> leng=<span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> k, v <span class="keyword">in</span> <span class="built_in">pairs</span>(t) <span class="keyword">do</span></span><br><span class="line">    leng=leng+<span class="number">1</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">return</span> leng;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+            <a href="/tags/Lua/" rel="tag"># Lua</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/15/Lua学习笔记二/" rel="next" title="Lua学习笔记二">
+                <i class="fa fa-chevron-left"></i> Lua学习笔记二
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myavatar.jpeg" alt="吴飞">
+            
+              <p class="site-author-name" itemprop="name">吴飞</p>
+              <p class="site-description motion-element" itemprop="description">Android Java C++</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串操作"><span class="nav-number">1.1.</span> <span class="nav-text">字符串操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lua数组"><span class="nav-number">2.</span> <span class="nav-text">Lua数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一维数组"><span class="nav-number">2.1.</span> <span class="nav-text">一维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">2.2.</span> <span class="nav-text">多维数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器"><span class="nav-number">3.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型for迭代器"><span class="nav-number">3.1.</span> <span class="nav-text">泛型for迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无状态的迭代器"><span class="nav-number">3.2.</span> <span class="nav-text">无状态的迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多状态的迭代器"><span class="nav-number">3.3.</span> <span class="nav-text">多状态的迭代器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#table"><span class="nav-number">4.</span> <span class="nav-text">table</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#table的操作"><span class="nav-number">4.1.</span> <span class="nav-text">table的操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴飞</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
